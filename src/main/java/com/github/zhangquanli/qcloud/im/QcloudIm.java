@@ -9,5 +9,10 @@ import com.github.zhangquanli.qcloud.im.module.account.AccountService;
  */
 public interface QcloudIm {
 
+    /**
+     * 账号管理
+     *
+     * @return AccountService
+     */
     AccountService getAccountService();
 }

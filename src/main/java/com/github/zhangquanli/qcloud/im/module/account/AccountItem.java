@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
 /**
- * AccountCheckItem
+ * AccountItem
  *
  * @author zhangquanli
  */
@@ -13,10 +13,10 @@ import lombok.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class AccountCheckItem {
+public class AccountItem {
 
     /**
-     * 描述：请求校验的帐号的 UserID
+     * 描述：请求帐号
      * 示例：UserID_1
      * 是否必填：是
      */

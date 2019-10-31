@@ -8,15 +8,15 @@ import lombok.Setter;
 import java.util.List;
 
 /**
- * AccountCheckResponse
+ * AccountDeleteResponse
  *
  * @author zhangquanli
  */
 @Getter
 @Setter
-public class AccountCheckResponse extends AbstractCommonResponse {
+public class AccountDeleteResponse extends AbstractCommonResponse {
 
-    /**
+    /***
      * 描述：单个帐号的结果对象数组
      */
     @JsonProperty("ResultItem")

@@ -21,6 +21,10 @@ public interface QcloudImConstants {
      */
     String MULTI_ACCOUNT_IMPORT_URL = "/v4/im_open_login_svc/multiaccount_import";
     /**
+     * 帐号删除接口
+     */
+    String ACCOUNT_DELETE_URL = "/v4/im_open_login_svc/account_delete";
+    /**
      * 帐号校验接口
      */
     String ACCOUNT_CHECK_URL = "/v4/im_open_login_svc/account_check";

@@ -8,7 +8,7 @@ import lombok.*;
 import java.util.List;
 
 /**
- * AccountCheckRequest
+ * AccountDeleteRequest
  *
  * @author zhangquanli
  */
@@ -18,13 +18,13 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class AccountCheckRequest extends AbstractCommonRequest {
+public class AccountDeleteRequest extends AbstractCommonRequest {
 
     /**
-     * 描述：请求校验的帐号对象数组，单次请求最多支持100个帐号
+     * 描述：请求删除的帐号对象数组，单次请求最多支持100个帐号
      * 示例：[{"UserID":"UserID_1"}, {"UserID":"UserID_2"}]
      * 是否必填：是
      */
-    @JsonProperty("CheckItem")
+    @JsonProperty("DeleteItem")
     private List<AccountItem> items;
 }

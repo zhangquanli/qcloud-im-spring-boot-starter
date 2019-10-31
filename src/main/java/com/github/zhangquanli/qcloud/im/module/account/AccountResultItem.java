@@ -11,7 +11,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class AccountCheckResultItem {
+public class AccountResultItem {
 
     /**
      * 描述：请求校验的帐号的 UserID
