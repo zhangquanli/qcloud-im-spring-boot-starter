@@ -13,7 +13,7 @@ import lombok.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class TextMsgContent implements MsgContent {
+public class TextMsgContent extends AbstractMsgContent {
 
     /**
      * 描述：消息内容。

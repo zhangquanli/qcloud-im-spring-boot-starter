@@ -13,7 +13,7 @@ import lombok.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class FaceMsgContent implements MsgContent {
+public class FaceMsgContent extends AbstractMsgContent {
 
     /**
      * 描述：表情索引，用户自定义。

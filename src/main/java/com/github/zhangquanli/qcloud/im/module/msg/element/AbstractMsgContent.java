@@ -1,9 +1,9 @@
 package com.github.zhangquanli.qcloud.im.module.msg.element;
 
 /**
- * MsgContent
+ * 消息正文
  *
  * @author zhangquanli
  */
-public interface MsgContent {
+public abstract class AbstractMsgContent {
 }

@@ -3,7 +3,7 @@ package com.github.zhangquanli.qcloud.im.module.msg;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.github.zhangquanli.qcloud.im.module.AbstractCommonRequest;
-import com.github.zhangquanli.qcloud.im.module.msg.element.MsgElement;
+import com.github.zhangquanli.qcloud.im.module.msg.element.AbstractMsgElement;
 import lombok.*;
 
 import java.util.List;
@@ -72,5 +72,5 @@ public class SendMsgRequest extends AbstractCommonRequest {
      * 是否必填：是
      */
     @JsonProperty("MsgBody")
-    private List<MsgElement> msgBody;
+    private List<AbstractMsgElement> msgBody;
 }

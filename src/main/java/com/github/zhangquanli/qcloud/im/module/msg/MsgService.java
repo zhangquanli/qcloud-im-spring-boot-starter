@@ -3,8 +3,6 @@ package com.github.zhangquanli.qcloud.im.module.msg;
 import com.github.zhangquanli.qcloud.im.QcloudImProperties;
 import com.github.zhangquanli.qcloud.im.constants.QcloudImConstants;
 import com.github.zhangquanli.qcloud.im.module.AbstractCommonService;
-import com.github.zhangquanli.qcloud.im.module.msg.element.TextMsgContent;
-import com.github.zhangquanli.qcloud.im.module.msg.element.TextMsgElement;
 
 /**
  * MsgService
@@ -55,12 +53,6 @@ public class MsgService extends AbstractCommonService {
         String url = buildUrl(QcloudImConstants.BATCH_SEND_MSG_URL);
         String responseJson = postParamsJson(url, batchSendMsgRequest);
         return convert(responseJson, BatchSendMsgResponse.class);
-    }
-
-    {
-        TextMsgElement build = TextMsgElement.builder()
-                .msgContent(TextMsgContent.builder().text("123123").build())
-                .build();
     }
 
     /**

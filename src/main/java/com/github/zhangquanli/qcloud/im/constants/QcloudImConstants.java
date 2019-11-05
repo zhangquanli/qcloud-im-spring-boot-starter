@@ -45,7 +45,7 @@ public interface QcloudImConstants {
      * 导入单聊消息
      */
     String IMPORT_MSG_URL = "/v4/openim/importmsg";
-    
+
     /**
      * 获取用户在线状态
      */

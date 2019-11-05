@@ -13,7 +13,7 @@ import lombok.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class CustomMsgContent implements MsgContent {
+public class CustomMsgContent extends AbstractMsgContent {
 
     /**
      * 描述：自定义消息数据。 不作为 APNs 的 payload 字段下发，故从 payload 中无法获取 Data 字段。

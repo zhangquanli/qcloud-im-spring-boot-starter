@@ -15,7 +15,7 @@ import java.math.BigDecimal;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class LocationMsgContent implements MsgContent {
+public class LocationMsgContent extends AbstractMsgContent {
 
     /**
      * 描述：地理位置描述信息。
