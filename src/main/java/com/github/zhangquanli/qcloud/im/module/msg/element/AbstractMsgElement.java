@@ -32,12 +32,4 @@ public abstract class AbstractMsgElement<T extends AbstractMsgContent> {
     public T getMsgContent() {
         return msgContent;
     }
-
-    @Override
-    public String toString() {
-        return "AbstractMsgElement{" +
-                "msgType='" + msgType + '\'' +
-                ", msgContent=" + msgContent +
-                '}';
-    }
 }
