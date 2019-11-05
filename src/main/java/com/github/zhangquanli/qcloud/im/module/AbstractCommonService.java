@@ -1,6 +1,7 @@
 package com.github.zhangquanli.qcloud.im.module;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.zhangquanli.qcloud.im.QcloudImProperties;
 import com.github.zhangquanli.qcloud.im.constants.QcloudImConstants;
@@ -54,6 +55,7 @@ public abstract class AbstractCommonService {
         }
         this.adminIdentifier = qcloudImProperties.getAdminIdentifier();
         this.objectMapper = new ObjectMapper();
+        objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
         this.okHttpClient = new OkHttpClient();
     }
 

@@ -19,4 +19,9 @@ public class SendMsgResponse extends AbstractCommonResponse {
      */
     @JsonProperty("MsgTime")
     private Integer msgTime;
+    /**
+     * 描述：消息唯一标识，用于撤回。长度不超过50个字符
+     */
+    @JsonProperty("MsgKey")
+    private String msgKey;
 }
