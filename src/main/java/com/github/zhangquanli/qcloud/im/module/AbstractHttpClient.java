@@ -7,8 +7,9 @@ import com.github.zhangquanli.qcloud.im.QcloudImProperties;
 import com.github.zhangquanli.qcloud.im.constants.QcloudImConstants;
 import com.github.zhangquanli.qcloud.im.constants.TlsSig;
 import com.github.zhangquanli.qcloud.im.module.user_sig.UserSig;
-import lombok.extern.slf4j.Slf4j;
 import okhttp3.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -22,9 +23,8 @@ import java.util.Random;
  *
  * @author zhangquanli
  */
-@Slf4j
 public abstract class AbstractHttpClient {
-
+    private static final Logger log = LoggerFactory.getLogger(AbstractHttpClient.class);
     private Long sdkAppId;
     private String privateKey;
     private String adminIdentifier;
@@ -35,7 +35,6 @@ public abstract class AbstractHttpClient {
 
     protected AbstractHttpClient(QcloudImProperties qcloudImProperties) {
         this.sdkAppId = qcloudImProperties.getSdkAppId();
-
         try {
             // 读取密钥文件
             String privateKeyPath = qcloudImProperties.getPrivateKeyPath();
@@ -80,10 +79,10 @@ public abstract class AbstractHttpClient {
         return post(request);
     }
 
-    protected String postParamsJson(String url, AbstractCommonRequest commonRequest) {
+    protected String postParamsJson(String url, AbstractRequest abstractRequest) {
         try {
             // 构建请求数据
-            String requestJson = objectMapper.writeValueAsString(commonRequest);
+            String requestJson = objectMapper.writeValueAsString(abstractRequest);
             RequestBody requestBody = RequestBody.create(MediaType.parse("application/json;charset=utf-8"), requestJson);
             Request request = new Request.Builder().url(url).post(requestBody).build();
             if (log.isDebugEnabled()) {
@@ -125,7 +124,7 @@ public abstract class AbstractHttpClient {
         }
     }
 
-    protected <T extends AbstractCommonResponse> T convert(String json, Class<T> targetClass) {
+    protected <T extends AbstractResponse> T convert(String json, Class<T> targetClass) {
         try {
             return objectMapper.readValue(json, targetClass);
         } catch (JsonProcessingException e) {

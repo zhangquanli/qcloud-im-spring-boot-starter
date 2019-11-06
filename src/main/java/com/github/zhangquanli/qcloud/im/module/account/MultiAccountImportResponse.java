@@ -1,9 +1,7 @@
 package com.github.zhangquanli.qcloud.im.module.account;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.github.zhangquanli.qcloud.im.module.AbstractCommonResponse;
-import lombok.Getter;
-import lombok.Setter;
+import com.github.zhangquanli.qcloud.im.module.AbstractResponse;
 
 import java.util.List;
 
@@ -12,13 +10,19 @@ import java.util.List;
  *
  * @author zhangquanli
  */
-@Getter
-@Setter
-public class MultiAccountImportResponse extends AbstractCommonResponse {
+public class MultiAccountImportResponse extends AbstractResponse {
 
     /**
      * 描述：导入失败的帐号列表
      */
-    @JsonProperty("FailAccounts")
     private List<String> failAccounts;
+
+    public List<String> getFailAccounts() {
+        return failAccounts;
+    }
+
+    @JsonProperty("FailAccounts")
+    public void setFailAccounts(List<String> failAccounts) {
+        this.failAccounts = failAccounts;
+    }
 }

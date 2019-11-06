@@ -1,9 +1,9 @@
 package com.github.zhangquanli.qcloud.im.module;
 
 /**
- * AbstractCommonRequest
+ * AbstractRequest
  *
  * @author zhangquanli
  */
-public abstract class AbstractCommonRequest {
+public abstract class AbstractRequest {
 }

@@ -2,9 +2,12 @@ package com.github.zhangquanli.qcloud.im.module.msg;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.github.zhangquanli.qcloud.im.module.AbstractCommonRequest;
+import com.github.zhangquanli.qcloud.im.module.AbstractRequest;
 import com.github.zhangquanli.qcloud.im.module.msg.element.AbstractMsgElement;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
@@ -15,11 +18,10 @@ import java.util.List;
  */
 @Builder
 @Getter
-@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class SendMsgRequest extends AbstractCommonRequest {
+public class SendMsgRequest extends AbstractRequest {
 
     /**
      * 描述：

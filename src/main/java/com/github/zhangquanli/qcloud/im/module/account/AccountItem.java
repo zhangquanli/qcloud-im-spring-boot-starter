@@ -1,7 +1,10 @@
 package com.github.zhangquanli.qcloud.im.module.account;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 /**
  * AccountItem
@@ -10,7 +13,6 @@ import lombok.*;
  */
 @Builder
 @Getter
-@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class AccountItem {

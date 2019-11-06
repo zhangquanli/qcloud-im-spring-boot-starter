@@ -12,12 +12,10 @@ public abstract class AbstractMsgElement<T extends AbstractMsgContent> {
     /**
      * 描述：消息元素类别
      */
-    @JsonProperty("MsgType")
     private String msgType;
     /**
      * 描述：消息元素的内容
      */
-    @JsonProperty("MsgContent")
     private T msgContent;
 
     protected AbstractMsgElement(String msgType, T msgContent) {
@@ -25,10 +23,12 @@ public abstract class AbstractMsgElement<T extends AbstractMsgContent> {
         this.msgContent = msgContent;
     }
 
+    @JsonProperty("MsgType")
     public String getMsgType() {
         return msgType;
     }
 
+    @JsonProperty("MsgContent")
     public T getMsgContent() {
         return msgContent;
     }

@@ -9,7 +9,35 @@ import com.github.zhangquanli.qcloud.im.constants.MsgType;
  */
 public class FaceMsgElement extends AbstractMsgElement<FaceMsgContent> {
 
-    public FaceMsgElement(FaceMsgContent msgContent) {
+    private FaceMsgElement(FaceMsgContent msgContent) {
         super(MsgType.TIM_FACE_ELEM.getValue(), msgContent);
+    }
+
+    public static FaceMsgElementBuilder builder() {
+        return new FaceMsgElementBuilder();
+    }
+
+    public static class FaceMsgElementBuilder {
+
+        private Integer index;
+        private String data;
+
+        private FaceMsgElementBuilder() {
+        }
+
+        public FaceMsgElementBuilder index(Integer index) {
+            this.index = index;
+            return this;
+        }
+
+        public FaceMsgElementBuilder data(String data) {
+            this.data = data;
+            return this;
+        }
+
+        public FaceMsgElement build() {
+            FaceMsgContent msgContent = FaceMsgContent.builder().index(index).data(data).build();
+            return new FaceMsgElement(msgContent);
+        }
     }
 }

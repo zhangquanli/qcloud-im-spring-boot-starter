@@ -9,7 +9,28 @@ import com.github.zhangquanli.qcloud.im.constants.MsgType;
  */
 public class TextMsgElement extends AbstractMsgElement<TextMsgContent> {
 
-    public TextMsgElement(TextMsgContent msgContent) {
+    private TextMsgElement(TextMsgContent msgContent) {
         super(MsgType.TIM_TEXT_ELEM.getValue(), msgContent);
+    }
+
+    public static TextMsgElementBuilder builder() {
+        return new TextMsgElementBuilder();
+    }
+
+    public static class TextMsgElementBuilder {
+
+        private String text;
+
+        private TextMsgElementBuilder() {
+        }
+
+        public TextMsgElementBuilder text(String text) {
+            this.text = text;
+            return this;
+        }
+
+        public TextMsgElement build() {
+            return new TextMsgElement(TextMsgContent.builder().text(text).build());
+        }
     }
 }

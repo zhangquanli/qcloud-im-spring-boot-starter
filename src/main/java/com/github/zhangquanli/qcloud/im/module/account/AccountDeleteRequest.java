@@ -2,8 +2,11 @@ package com.github.zhangquanli.qcloud.im.module.account;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.github.zhangquanli.qcloud.im.module.AbstractCommonRequest;
-import lombok.*;
+import com.github.zhangquanli.qcloud.im.module.AbstractRequest;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
@@ -14,11 +17,10 @@ import java.util.List;
  */
 @Builder
 @Getter
-@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class AccountDeleteRequest extends AbstractCommonRequest {
+public class AccountDeleteRequest extends AbstractRequest {
 
     /**
      * 描述：请求删除的帐号对象数组，单次请求最多支持100个帐号

@@ -2,8 +2,11 @@ package com.github.zhangquanli.qcloud.im.module.account;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.github.zhangquanli.qcloud.im.module.AbstractCommonRequest;
-import lombok.*;
+import com.github.zhangquanli.qcloud.im.module.AbstractRequest;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 /**
  * AccountImportRequest
@@ -12,11 +15,10 @@ import lombok.*;
  */
 @Builder
 @Getter
-@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class AccountImportRequest extends AbstractCommonRequest {
+public class AccountImportRequest extends AbstractRequest {
 
     /**
      * 描述：用户名，长度不超过32字节
