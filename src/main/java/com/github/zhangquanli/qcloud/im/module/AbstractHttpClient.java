@@ -5,7 +5,8 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.zhangquanli.qcloud.im.QcloudImProperties;
 import com.github.zhangquanli.qcloud.im.constants.QcloudImConstants;
-import com.tls.tls_sigature.tls_sigature;
+import com.github.zhangquanli.qcloud.im.constants.TlsSig;
+import com.github.zhangquanli.qcloud.im.module.user_sig.UserSig;
 import lombok.extern.slf4j.Slf4j;
 import okhttp3.*;
 
@@ -24,16 +25,17 @@ import java.util.Random;
 @Slf4j
 public abstract class AbstractHttpClient {
 
-    private Integer appId;
-    private Integer expire;
+    private Long sdkAppId;
     private String privateKey;
     private String adminIdentifier;
+    private TlsSig tlsSig;
+    private Long expire;
     private ObjectMapper objectMapper;
     private OkHttpClient okHttpClient;
 
     protected AbstractHttpClient(QcloudImProperties qcloudImProperties) {
-        this.appId = qcloudImProperties.getAppId();
-        this.expire = qcloudImProperties.getExpire();
+        this.sdkAppId = qcloudImProperties.getSdkAppId();
+
         try {
             // 读取密钥文件
             String privateKeyPath = qcloudImProperties.getPrivateKeyPath();
@@ -54,6 +56,8 @@ public abstract class AbstractHttpClient {
             throw new RuntimeException(msg);
         }
         this.adminIdentifier = qcloudImProperties.getAdminIdentifier();
+        this.tlsSig = qcloudImProperties.getTlsSig();
+        this.expire = qcloudImProperties.getExpire();
         this.objectMapper = new ObjectMapper();
         objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
         this.okHttpClient = new OkHttpClient();
@@ -61,9 +65,9 @@ public abstract class AbstractHttpClient {
 
     protected String buildUrl(String api) {
         return QcloudImConstants.DOMAIN + api +
-                "?sdkappid=" + appId +
+                "?sdkappid=" + sdkAppId +
                 "&identifier=" + adminIdentifier +
-                "&usersig=" + userSig() +
+                "&usersig=" + generateUserSig(adminIdentifier) +
                 "&random=" + random() +
                 "&contenttype=" + contentType();
     }
@@ -131,8 +135,15 @@ public abstract class AbstractHttpClient {
         }
     }
 
-    private String userSig() {
-        return tls_sigature.genSig(appId, adminIdentifier, expire, privateKey).urlSig;
+    protected String generateUserSig(String identifier) {
+        try {
+            UserSig userSig = tlsSig.getUserSig().newInstance();
+            return userSig.generate(sdkAppId, privateKey, expire, identifier);
+        } catch (IllegalAccessException | InstantiationException e) {
+            String msg = "【腾讯云】>>>【即时通信】>>>签名生成异常";
+            log.error(msg, e);
+            throw new RuntimeException(msg);
+        }
     }
 
     private long random() {

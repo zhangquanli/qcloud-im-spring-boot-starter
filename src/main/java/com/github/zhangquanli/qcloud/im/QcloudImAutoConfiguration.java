@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 @EnableConfigurationProperties(QcloudImProperties.class)
-@ConditionalOnProperty(prefix = "qcloud.im", name = {"app-id", "private-key-path", "admin-identifier"})
+@ConditionalOnProperty(prefix = "qcloud.im", name = {"sdk-app-id", "private-key-path", "admin-identifier", "tls-sig"})
 public class QcloudImAutoConfiguration {
 
     private QcloudImProperties qcloudImProperties;

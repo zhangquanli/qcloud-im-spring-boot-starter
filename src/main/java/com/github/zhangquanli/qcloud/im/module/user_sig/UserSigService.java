@@ -13,5 +13,5 @@ public interface UserSigService {
      * @param identifier 账号
      * @return UserSig
      */
-    String generateUserSig(String identifier);
+    String getUserSig(String identifier);
 }
