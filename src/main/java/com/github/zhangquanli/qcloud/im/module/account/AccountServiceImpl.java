@@ -27,12 +27,6 @@ public class AccountServiceImpl extends AbstractHttpClient implements AccountSer
         return convert(responseJson, MultiAccountImportResponse.class);
     }
 
-    public KickResponse kick(KickRequest kickRequest) {
-        String url = buildUrl(QcloudImConstants.KICK_URL);
-        String responseJson = postParamsJson(url, kickRequest);
-        return convert(responseJson, KickResponse.class);
-    }
-
     public AccountDeleteResponse accountDelete(AccountDeleteRequest accountDeleteRequest) {
         String url = buildUrl(QcloudImConstants.ACCOUNT_DELETE_URL);
         String responseJson = postParamsJson(url, accountDeleteRequest);
@@ -43,5 +37,11 @@ public class AccountServiceImpl extends AbstractHttpClient implements AccountSer
         String url = buildUrl(QcloudImConstants.ACCOUNT_CHECK_URL);
         String responseJson = postParamsJson(url, accountCheckRequest);
         return convert(responseJson, AccountCheckResponse.class);
+    }
+
+    public KickResponse kick(KickRequest kickRequest) {
+        String url = buildUrl(QcloudImConstants.KICK_URL);
+        String responseJson = postParamsJson(url, kickRequest);
+        return convert(responseJson, KickResponse.class);
     }
 }
