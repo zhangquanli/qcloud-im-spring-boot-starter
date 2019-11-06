@@ -15,30 +15,35 @@ public class AccountServiceImpl extends AbstractHttpClient implements AccountSer
         super(qcloudImProperties);
     }
 
+    @Override
     public AccountImportResponse accountImport(AccountImportRequest accountImportRequest) {
         String url = buildUrl(QcloudImConstants.ACCOUNT_IMPORT_URL);
         String responseJson = postParamsJson(url, accountImportRequest);
         return convert(responseJson, AccountImportResponse.class);
     }
 
+    @Override
     public MultiAccountImportResponse multiAccountImport(MultiAccountImportRequest multiAccountImportRequest) {
         String url = buildUrl(QcloudImConstants.MULTI_ACCOUNT_IMPORT_URL);
         String responseJson = postParamsJson(url, multiAccountImportRequest);
         return convert(responseJson, MultiAccountImportResponse.class);
     }
 
+    @Override
     public AccountDeleteResponse accountDelete(AccountDeleteRequest accountDeleteRequest) {
         String url = buildUrl(QcloudImConstants.ACCOUNT_DELETE_URL);
         String responseJson = postParamsJson(url, accountDeleteRequest);
         return convert(responseJson, AccountDeleteResponse.class);
     }
 
+    @Override
     public AccountCheckResponse accountCheck(AccountCheckRequest accountCheckRequest) {
         String url = buildUrl(QcloudImConstants.ACCOUNT_CHECK_URL);
         String responseJson = postParamsJson(url, accountCheckRequest);
         return convert(responseJson, AccountCheckResponse.class);
     }
 
+    @Override
     public KickResponse kick(KickRequest kickRequest) {
         String url = buildUrl(QcloudImConstants.KICK_URL);
         String responseJson = postParamsJson(url, kickRequest);
