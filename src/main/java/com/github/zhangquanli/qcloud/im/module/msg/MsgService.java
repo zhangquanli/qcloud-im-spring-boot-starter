@@ -1,19 +1,11 @@
 package com.github.zhangquanli.qcloud.im.module.msg;
 
-import com.github.zhangquanli.qcloud.im.QcloudImProperties;
-import com.github.zhangquanli.qcloud.im.constants.QcloudImConstants;
-import com.github.zhangquanli.qcloud.im.module.AbstractCommonService;
-
 /**
  * MsgService
  *
  * @author zhangquanli
  */
-public class MsgService extends AbstractCommonService {
-
-    public MsgService(QcloudImProperties qcloudImProperties) {
-        super(qcloudImProperties);
-    }
+public interface MsgService {
 
     /**
      * 单发单聊消息
@@ -28,11 +20,7 @@ public class MsgService extends AbstractCommonService {
      * @param sendMsgRequest 请求参数
      * @return SendMsgResponse
      */
-    public SendMsgResponse sendMsg(SendMsgRequest sendMsgRequest) {
-        String url = buildUrl(QcloudImConstants.SEND_MSG_URL);
-        String responseJson = postParamsJson(url, sendMsgRequest);
-        return convert(responseJson, SendMsgResponse.class);
-    }
+    SendMsgResponse sendMsg(SendMsgRequest sendMsgRequest);
 
     /**
      * 批量发单聊消息
@@ -49,11 +37,7 @@ public class MsgService extends AbstractCommonService {
      * @param batchSendMsgRequest 请求参数
      * @return BatchSendMsgResponse
      */
-    public BatchSendMsgResponse batchSendMsg(BatchSendMsgRequest batchSendMsgRequest) {
-        String url = buildUrl(QcloudImConstants.BATCH_SEND_MSG_URL);
-        String responseJson = postParamsJson(url, batchSendMsgRequest);
-        return convert(responseJson, BatchSendMsgResponse.class);
-    }
+    BatchSendMsgResponse batchSendMsg(BatchSendMsgRequest batchSendMsgRequest);
 
     /**
      * 导入单聊消息
@@ -65,9 +49,5 @@ public class MsgService extends AbstractCommonService {
      * @param importMsgRequest 请求参数
      * @return ImportMsgResponse
      */
-    public ImportMsgResponse importMsg(ImportMsgRequest importMsgRequest) {
-        String url = buildUrl(QcloudImConstants.IMPORT_MSG_URL);
-        String responseJson = postParamsJson(url, importMsgRequest);
-        return convert(responseJson, ImportMsgResponse.class);
-    }
+    ImportMsgResponse importMsg(ImportMsgRequest importMsgRequest);
 }

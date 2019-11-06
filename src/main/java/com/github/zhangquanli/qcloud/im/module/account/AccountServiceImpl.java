@@ -2,16 +2,16 @@ package com.github.zhangquanli.qcloud.im.module.account;
 
 import com.github.zhangquanli.qcloud.im.QcloudImProperties;
 import com.github.zhangquanli.qcloud.im.constants.QcloudImConstants;
-import com.github.zhangquanli.qcloud.im.module.AbstractCommonService;
+import com.github.zhangquanli.qcloud.im.module.AbstractHttpClient;
 
 /**
  * 账号管理
  *
  * @author zhangquanli
  */
-public class AccountService extends AbstractCommonService {
+public class AccountServiceImpl extends AbstractHttpClient {
 
-    public AccountService(QcloudImProperties qcloudImProperties) {
+    public AccountServiceImpl(QcloudImProperties qcloudImProperties) {
         super(qcloudImProperties);
     }
 

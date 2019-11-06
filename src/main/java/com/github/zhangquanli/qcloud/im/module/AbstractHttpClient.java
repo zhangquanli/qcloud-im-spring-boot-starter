@@ -17,12 +17,12 @@ import java.nio.charset.StandardCharsets;
 import java.util.Random;
 
 /**
- * AbstractCommonService
+ * AbstractHttpClient
  *
  * @author zhangquanli
  */
 @Slf4j
-public abstract class AbstractCommonService {
+public abstract class AbstractHttpClient {
 
     private Integer appId;
     private Integer expire;
@@ -31,7 +31,7 @@ public abstract class AbstractCommonService {
     private ObjectMapper objectMapper;
     private OkHttpClient okHttpClient;
 
-    public AbstractCommonService(QcloudImProperties qcloudImProperties) {
+    protected AbstractHttpClient(QcloudImProperties qcloudImProperties) {
         this.appId = qcloudImProperties.getAppId();
         this.expire = qcloudImProperties.getExpire();
         try {
