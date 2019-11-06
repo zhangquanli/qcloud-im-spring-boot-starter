@@ -1,7 +1,7 @@
 package com.github.zhangquanli.qcloud.im.module.msg;
 
 /**
- * MsgService
+ * 单聊消息
  *
  * @author zhangquanli
  */
