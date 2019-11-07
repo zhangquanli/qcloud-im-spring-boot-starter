@@ -1,25 +1,16 @@
 package com.github.zhangquanli.qcloud.im.module.account;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.github.zhangquanli.qcloud.im.module.AbstractRequest;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * AccountDeleteRequest
  *
  * @author zhangquanli
  */
-@Builder
-@Getter
-@NoArgsConstructor
-@AllArgsConstructor
-@JsonInclude(JsonInclude.Include.NON_NULL)
 public class AccountDeleteRequest extends AbstractRequest {
 
     /**
@@ -29,4 +20,36 @@ public class AccountDeleteRequest extends AbstractRequest {
      */
     @JsonProperty("DeleteItem")
     private List<AccountItem> items;
+
+    private AccountDeleteRequest(List<AccountItem> items) {
+        this.items = items;
+    }
+
+    public List<AccountItem> getItems() {
+        return items;
+    }
+
+    public static AccountDeleteRequestBuilder builder() {
+        return new AccountDeleteRequestBuilder();
+    }
+
+    public static class AccountDeleteRequestBuilder {
+
+        private List<String> items;
+
+        private AccountDeleteRequestBuilder() {
+        }
+
+        public AccountDeleteRequestBuilder items(List<String> items) {
+            this.items = items;
+            return this;
+        }
+
+        public AccountDeleteRequest build() {
+            List<AccountItem> accountItems = items.stream()
+                    .map(userId -> AccountItem.builder().userId(userId).build())
+                    .collect(Collectors.toList());
+            return new AccountDeleteRequest(accountItems);
+        }
+    }
 }

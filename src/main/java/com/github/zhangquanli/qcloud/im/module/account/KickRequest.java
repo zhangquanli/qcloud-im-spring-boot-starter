@@ -1,23 +1,13 @@
 package com.github.zhangquanli.qcloud.im.module.account;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.github.zhangquanli.qcloud.im.module.AbstractRequest;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
 
 /**
  * KickRequest
  *
  * @author zhangquanli
  */
-@Builder
-@Getter
-@NoArgsConstructor
-@AllArgsConstructor
-@JsonInclude(JsonInclude.Include.NON_NULL)
 public class KickRequest extends AbstractRequest {
 
     /**
@@ -27,4 +17,33 @@ public class KickRequest extends AbstractRequest {
      */
     @JsonProperty("Identifier")
     private String identifier;
+
+    private KickRequest(String identifier) {
+        this.identifier = identifier;
+    }
+
+    public String getIdentifier() {
+        return identifier;
+    }
+
+    public static KickRequestBuilder builder() {
+        return new KickRequestBuilder();
+    }
+
+    public static class KickRequestBuilder {
+
+        private String identifier;
+
+        private KickRequestBuilder() {
+        }
+
+        public KickRequestBuilder identifier(String identifier) {
+            this.identifier = identifier;
+            return this;
+        }
+
+        public KickRequest build() {
+            return new KickRequest(identifier);
+        }
+    }
 }

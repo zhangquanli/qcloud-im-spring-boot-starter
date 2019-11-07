@@ -18,17 +18,18 @@ public class BatchSendMsgResponse extends AbstractResponse {
      * 若消息全部发送成功，则 ErrorList 为空。
      * 因此判断回包中是否含 ErrorList ，来判断消息是否全部发送成功
      */
+    @JsonProperty("ErrorList")
     private List<BatchSendMsgError> errorList;
     /**
      * 描述：消息唯一标识，用于撤回。长度不超过50个字符
      */
+    @JsonProperty("MsgKey")
     private String msgKey;
 
     public List<BatchSendMsgError> getErrorList() {
         return errorList;
     }
 
-    @JsonProperty("ErrorList")
     public void setErrorList(List<BatchSendMsgError> errorList) {
         this.errorList = errorList;
     }
@@ -37,7 +38,6 @@ public class BatchSendMsgResponse extends AbstractResponse {
         return msgKey;
     }
 
-    @JsonProperty("MsgKey")
     public void setMsgKey(String msgKey) {
         this.msgKey = msgKey;
     }

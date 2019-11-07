@@ -1,25 +1,16 @@
 package com.github.zhangquanli.qcloud.im.module.account;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.github.zhangquanli.qcloud.im.module.AbstractRequest;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * AccountCheckRequest
  *
  * @author zhangquanli
  */
-@Builder
-@Getter
-@NoArgsConstructor
-@AllArgsConstructor
-@JsonInclude(JsonInclude.Include.NON_NULL)
 public class AccountCheckRequest extends AbstractRequest {
 
     /**
@@ -29,4 +20,36 @@ public class AccountCheckRequest extends AbstractRequest {
      */
     @JsonProperty("CheckItem")
     private List<AccountItem> items;
+
+    private AccountCheckRequest(List<AccountItem> items) {
+        this.items = items;
+    }
+
+    public List<AccountItem> getItems() {
+        return items;
+    }
+
+    public static AccountCheckRequestBuilder builder() {
+        return new AccountCheckRequestBuilder();
+    }
+
+    public static class AccountCheckRequestBuilder {
+
+        private List<String> items;
+
+        private AccountCheckRequestBuilder() {
+        }
+
+        public AccountCheckRequestBuilder items(List<String> items) {
+            this.items = items;
+            return this;
+        }
+
+        public AccountCheckRequest build() {
+            List<AccountItem> accountItems = items.stream()
+                    .map(userId -> AccountItem.builder().userId(userId).build())
+                    .collect(Collectors.toList());
+            return new AccountCheckRequest(accountItems);
+        }
+    }
 }

@@ -15,13 +15,13 @@ public class AccountCheckResponse extends AbstractResponse {
     /**
      * 描述：单个帐号的结果对象数组
      */
+    @JsonProperty("ResultItem")
     private List<AccountResultItem> resultItems;
 
     public List<AccountResultItem> getResultItems() {
         return resultItems;
     }
 
-    @JsonProperty("ResultItem")
     public void setResultItems(List<AccountResultItem> resultItems) {
         this.resultItems = resultItems;
     }

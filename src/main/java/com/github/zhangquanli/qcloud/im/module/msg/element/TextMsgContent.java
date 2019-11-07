@@ -14,13 +14,13 @@ public class TextMsgContent extends AbstractMsgContent {
      * 示例：hello world
      * 是否必填：是
      */
+    @JsonProperty("Text")
     private String text;
 
     private TextMsgContent(String text) {
         this.text = text;
     }
 
-    @JsonProperty("Text")
     public String getText() {
         return text;
     }

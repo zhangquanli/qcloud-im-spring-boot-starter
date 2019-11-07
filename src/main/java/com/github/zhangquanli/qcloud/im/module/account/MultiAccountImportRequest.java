@@ -1,12 +1,7 @@
 package com.github.zhangquanli.qcloud.im.module.account;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.github.zhangquanli.qcloud.im.module.AbstractRequest;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
 
 import java.util.List;
 
@@ -15,11 +10,6 @@ import java.util.List;
  *
  * @author zhangquanli
  */
-@Builder
-@Getter
-@NoArgsConstructor
-@AllArgsConstructor
-@JsonInclude(JsonInclude.Include.NON_NULL)
 public class MultiAccountImportRequest extends AbstractRequest {
 
     /**
@@ -29,4 +19,33 @@ public class MultiAccountImportRequest extends AbstractRequest {
      */
     @JsonProperty("Accounts")
     private List<String> accounts;
+
+    private MultiAccountImportRequest(List<String> accounts) {
+        this.accounts = accounts;
+    }
+
+    public List<String> getAccounts() {
+        return accounts;
+    }
+
+    public static MultiAccountImportRequestBuilder builder() {
+        return new MultiAccountImportRequestBuilder();
+    }
+
+    public static class MultiAccountImportRequestBuilder {
+
+        private List<String> accounts;
+
+        private MultiAccountImportRequestBuilder() {
+        }
+
+        public MultiAccountImportRequestBuilder accounts(List<String> accounts) {
+            this.accounts = accounts;
+            return this;
+        }
+
+        public MultiAccountImportRequest build() {
+            return new MultiAccountImportRequest(accounts);
+        }
+    }
 }

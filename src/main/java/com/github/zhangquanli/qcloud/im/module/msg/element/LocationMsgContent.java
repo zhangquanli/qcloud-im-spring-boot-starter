@@ -16,18 +16,21 @@ public class LocationMsgContent extends AbstractMsgContent {
      * 示例：someinfo
      * 是否必填：是
      */
+    @JsonProperty("Desc")
     private String desc;
     /**
      * 描述：纬度。
      * 示例：29.340656774469956
      * 是否必填：是
      */
+    @JsonProperty("Latitude")
     private BigDecimal latitude;
     /**
      * 描述：经度。
      * 示例：116.77497920478824
      * 是否必填：是
      */
+    @JsonProperty("Longitude")
     private BigDecimal longitude;
 
     private LocationMsgContent(String desc, BigDecimal latitude, BigDecimal longitude) {
@@ -36,17 +39,14 @@ public class LocationMsgContent extends AbstractMsgContent {
         this.longitude = longitude;
     }
 
-    @JsonProperty("Desc")
     public String getDesc() {
         return desc;
     }
 
-    @JsonProperty("Latitude")
     public BigDecimal getLatitude() {
         return latitude;
     }
 
-    @JsonProperty("Longitude")
     public BigDecimal getLongitude() {
         return longitude;
     }

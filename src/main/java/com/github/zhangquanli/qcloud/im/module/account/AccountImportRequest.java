@@ -1,23 +1,13 @@
 package com.github.zhangquanli.qcloud.im.module.account;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.github.zhangquanli.qcloud.im.module.AbstractRequest;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
 
 /**
  * AccountImportRequest
  *
  * @author zhangquanli
  */
-@Builder
-@Getter
-@NoArgsConstructor
-@AllArgsConstructor
-@JsonInclude(JsonInclude.Include.NON_NULL)
 public class AccountImportRequest extends AbstractRequest {
 
     /**
@@ -48,4 +38,66 @@ public class AccountImportRequest extends AbstractRequest {
      */
     @JsonProperty("Type")
     private Integer type;
+
+    private AccountImportRequest(String identifier, String nick, String faceUrl, Integer type) {
+        this.identifier = identifier;
+        this.nick = nick;
+        this.faceUrl = faceUrl;
+        this.type = type;
+    }
+
+    public String getIdentifier() {
+        return identifier;
+    }
+
+    public String getNick() {
+        return nick;
+    }
+
+    public String getFaceUrl() {
+        return faceUrl;
+    }
+
+    public Integer getType() {
+        return type;
+    }
+
+    public static AccountImportRequestBuilder builder() {
+        return new AccountImportRequestBuilder();
+    }
+
+    public static class AccountImportRequestBuilder {
+
+        private String identifier;
+        private String nick;
+        private String faceUrl;
+        private Integer type;
+
+        private AccountImportRequestBuilder() {
+        }
+
+        public AccountImportRequestBuilder identifier(String identifier) {
+            this.identifier = identifier;
+            return this;
+        }
+
+        public AccountImportRequestBuilder nick(String nick) {
+            this.nick = nick;
+            return this;
+        }
+
+        public AccountImportRequestBuilder faceUrl(String faceUrl) {
+            this.faceUrl = faceUrl;
+            return this;
+        }
+
+        public AccountImportRequestBuilder type(Integer type) {
+            this.type = type;
+            return this;
+        }
+
+        public AccountImportRequest build() {
+            return new AccountImportRequest(identifier, nick, faceUrl, type);
+        }
+    }
 }

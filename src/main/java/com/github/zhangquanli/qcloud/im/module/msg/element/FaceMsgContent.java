@@ -14,12 +14,14 @@ public class FaceMsgContent extends AbstractMsgContent {
      * 示例：1
      * 是否必填：是
      */
+    @JsonProperty("Index")
     private Integer index;
     /**
      * 描述：额外数据。
      * 示例：content
      * 是否必填：是
      */
+    @JsonProperty("Data")
     private String data;
 
     private FaceMsgContent(Integer index, String data) {
@@ -27,12 +29,10 @@ public class FaceMsgContent extends AbstractMsgContent {
         this.data = data;
     }
 
-    @JsonProperty("Index")
     public Integer getIndex() {
         return index;
     }
 
-    @JsonProperty("Data")
     public String getData() {
         return data;
     }

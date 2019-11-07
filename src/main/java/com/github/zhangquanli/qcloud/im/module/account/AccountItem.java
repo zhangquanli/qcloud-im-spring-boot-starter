@@ -1,20 +1,12 @@
 package com.github.zhangquanli.qcloud.im.module.account;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
 
 /**
  * AccountItem
  *
  * @author zhangquanli
  */
-@Builder
-@Getter
-@NoArgsConstructor
-@AllArgsConstructor
 public class AccountItem {
 
     /**
@@ -24,4 +16,33 @@ public class AccountItem {
      */
     @JsonProperty("UserID")
     private String userId;
+
+    private AccountItem(String userId) {
+        this.userId = userId;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public static AccountItemBuilder builder() {
+        return new AccountItemBuilder();
+    }
+
+    public static class AccountItemBuilder {
+
+        private String userId;
+
+        private AccountItemBuilder() {
+        }
+
+        public AccountItemBuilder userId(String userId) {
+            this.userId = userId;
+            return this;
+        }
+
+        public AccountItem build() {
+            return new AccountItem(userId);
+        }
+    }
 }

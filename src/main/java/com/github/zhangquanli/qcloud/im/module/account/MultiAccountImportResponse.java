@@ -15,13 +15,13 @@ public class MultiAccountImportResponse extends AbstractResponse {
     /**
      * 描述：导入失败的帐号列表
      */
+    @JsonProperty("FailAccounts")
     private List<String> failAccounts;
 
     public List<String> getFailAccounts() {
         return failAccounts;
     }
 
-    @JsonProperty("FailAccounts")
     public void setFailAccounts(List<String> failAccounts) {
         this.failAccounts = failAccounts;
     }
