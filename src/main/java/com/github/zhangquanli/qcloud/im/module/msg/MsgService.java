@@ -50,4 +50,18 @@ public interface MsgService {
      * @return ImportMsgResponse
      */
     ImportMsgResponse importMsg(ImportMsgRequest importMsgRequest);
+
+    /**
+     * 撤回单聊消息
+     * <p>
+     * 管理员撤回单聊消息。
+     * 该接口只能撤回由 REST API 单发 和 批量发 的单聊消息。
+     * 调用该接口撤回消息后，该条消息的离线、漫游存储，以及客户端的本地缓存都会被撤回。
+     * <p>
+     * 注意：使用该接口撤回单聊消息后，被撤回的消息不能恢复，请谨慎调用该接口。
+     *
+     * @param withdrawMsgRequest 请求参数
+     * @return WithdrawMsgResponse
+     */
+    WithdrawMsgResponse withdrawMsg(WithdrawMsgRequest withdrawMsgRequest);
 }
