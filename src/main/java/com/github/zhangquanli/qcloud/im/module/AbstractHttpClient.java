@@ -94,7 +94,7 @@ public abstract class AbstractHttpClient {
             // 获取响应数据
             return post(request);
         } catch (JsonProcessingException e) {
-            String msg = "【腾讯云】>>>【即时通信】>>>请求数据异常";
+            String msg = "【腾讯云】>>>【即时通信】>>>数据转换异常";
             log.error(msg, e);
             throw new RuntimeException(msg);
         }
@@ -131,7 +131,7 @@ public abstract class AbstractHttpClient {
         try {
             return objectMapper.readValue(json, targetClass);
         } catch (JsonProcessingException e) {
-            String msg = "【腾讯云】>>>【即时通信】>>>响应数据异常";
+            String msg = "【腾讯云】>>>【即时通信】>>>数据转换异常";
             log.error(msg, e);
             throw new RuntimeException(msg);
         }
