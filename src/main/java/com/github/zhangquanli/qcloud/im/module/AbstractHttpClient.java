@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.zhangquanli.qcloud.im.QcloudImProperties;
 import com.github.zhangquanli.qcloud.im.constants.QcloudImConstants;
 import com.github.zhangquanli.qcloud.im.constants.TlsSig;
+import com.github.zhangquanli.qcloud.im.module.user_sig.TlsSigStrategy;
 import com.github.zhangquanli.qcloud.im.module.user_sig.UserSig;
 import okhttp3.*;
 import org.slf4j.Logger;
@@ -136,7 +137,8 @@ public abstract class AbstractHttpClient {
 
     protected String generateUserSig(String identifier) {
         try {
-            UserSig userSig = tlsSig.getUserSig().newInstance();
+            TlsSigStrategy tlsSigStrategy = tlsSig.getStrategy().newInstance();
+            UserSig userSig = new UserSig(tlsSigStrategy);
             return userSig.generate(sdkAppId, privateKey, expire, identifier);
         } catch (IllegalAccessException | InstantiationException e) {
             String msg = "【腾讯云】>>>【即时通信】>>>签名生成异常";

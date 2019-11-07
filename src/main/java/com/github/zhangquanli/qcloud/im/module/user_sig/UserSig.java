@@ -1,11 +1,17 @@
 package com.github.zhangquanli.qcloud.im.module.user_sig;
 
 /**
- * 用户签名，即账号的密码
+ * UserSig
  *
  * @author zhangquanli
  */
-public interface UserSig {
+public class UserSig {
+
+    private TlsSigStrategy tlsSigStrategy;
+
+    public UserSig(TlsSigStrategy tlsSigStrategy) {
+        this.tlsSigStrategy = tlsSigStrategy;
+    }
 
     /**
      * 生成
@@ -16,5 +22,7 @@ public interface UserSig {
      * @param identifier 账号
      * @return 用户签名的字符串
      */
-    String generate(long sdkAppId, String privateKey, long expire, String identifier);
+    public String generate(long sdkAppId, String privateKey, long expire, String identifier) {
+        return tlsSigStrategy.genSig(sdkAppId, privateKey, expire, identifier);
+    }
 }
